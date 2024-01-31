@@ -15,7 +15,7 @@ function search() {
   const apikey = "gVupB73DddxmtrNNEY9ywOuMPADuVlYF";
   let ckey = "";
 
-  let apiurl = `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apikey}&q=${searchCity}`;
+  let apiurl = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apikey}&q=${searchCity}`;
 
 
   document.getElementById("search-box").value = "";
@@ -77,7 +77,7 @@ function search() {
 
       ckey = data[0].Key;
 
-      let cityTempUrl = `http://dataservice.accuweather.com/currentconditions/v1/${ckey}?apikey=${apikey}&details=true`;
+      let cityTempUrl = `https://dataservice.accuweather.com/currentconditions/v1/${ckey}?apikey=${apikey}&details=true`;
       return fetch(cityTempUrl);
     })
     .then(anotherResponse => {
@@ -100,7 +100,7 @@ function search() {
       let IconImg = TempData.WeatherIcon.toString().padStart(2, '0');
       cityTempImg.src = `https://developer.accuweather.com/sites/default/files/${IconImg}-s.png`;
       
-      let forecastUrl = `http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${ckey}?apikey=${apikey}&metric=true`;
+      let forecastUrl = `https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/${ckey}?apikey=${apikey}&metric=true`;
       
       return fetch(forecastUrl);
     }).then(response => {
