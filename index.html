@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+<style>
+    #loading {
+  position: absolute; /* Change from fixed to absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.spinner {
+  border: 8px solid rgba(0, 0, 0, 0.1);
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+</style>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-5" style="margin-inline: 35%;" id="webtitle">Weather Forecast</h1>
+
+        <div id="search-container" class="mt-4">
+            <input type="text" id="search-box" class="form-control mx-auto" placeholder="Enter city name">
+            <button id="search-icon" class="btn btn-primary" onclick="search()">🔍</button>
+        </div>
+
+       
+
+        <div id="current-weather" class="mt-4">
+            
+            <div class="card" >
+                <div id="loading" style="display: none;">
+                    <div class="spinner"></div>
+                  </div>
+                <div class="card-body" id="currentcard">
+                    <h2 class="card-title" id="cityname" style="margin-bottom: 0%;">City Name</h2>
+                    <p class="card-text" id="cityTemp">Current Temperature: 28°C</p>
+                    <!-- You can replace the icon with an actual weather icon -->
+                    <img src="" class="card-img-top" alt="Weather Icon" id="cityTempImg" style="width: 50%;">
+                    <p class="card-text" id="Condition">Partly Sunny</p>
+                </div>
+            </div>
+            <div id="info-grid">
+                <div class="info-box w-auto">
+                    <img src="humidity.svg" alt="" srcset=""style="width: 17%;">
+                    <p >Humidity </p>
+                    <p id="Humidity">65%</p>
+                </div>
+                <div class="info-box w-auto">
+                    <img src="wind.svg" alt="" srcset=""style="width: 15%;">
+                    <p>Wind Speed </p>
+                    <p id="windSpeed">12 km/h</p>
+                </div>
+                <div class="info-box w-auto">
+                    <img src="uv.svg" alt="" srcset="" style="width: 15%;" id="uvicon">
+                    <p>UV Index </p>
+                    <p id="uvIndex">3</p>
+                </div>
+                <div class="info-box w-auto">
+                    <img src="https://cdn.hugeicons.com/icons/eye-stroke-rounded.svg" alt="eye" width="24" height="24" />
+                    <p>Visibility </p>
+                    <p id="visibility">10 km</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div id="forecast" class="mt-4">
+
+            <div class="weather-card">
+                <div class="card-body" id="hour0">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+
+            <div class="weather-card">
+                <div class="card-body" id="hour1">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+
+            <div class="weather-card">
+                <div class="card-body" id="hour2">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour3">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour4">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour5">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour6">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour7">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour8">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour9">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour10">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+            <div class="weather-card">
+                <div class="card-body" id="hour11">
+                    <h2 class="card-title">Today</h2>
+                    <img src="wallhaven-l3q8zq_1920x1080.png" class="card-img-top" alt="Weather Icon" id="cityTempImg"
+                        style="width:100%; object-fit: cover;">
+                    <p class="card-text temp">Temperature: 20°C</p>
+                    <p class="card-text temp-text">Condition: Rainy</p>
+                </div>
+            </div>
+
+
+
+
+            <!-- Add more cards here as needed -->
+        </div>
+
+        <footer class="mt-5">
+            <p>&copy; 2024 Weather Forecast App</p>
+            <p>Made By UmangVadukar</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
