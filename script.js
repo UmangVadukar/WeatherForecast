@@ -12,7 +12,7 @@ function search() {
   let uvIndex = document.getElementById("uvIndex");
   let wheathervisiblity = document.getElementById("visibility");
   let forecast = document.getElementById("forecast");
-  const apikey = "gVupB73DddxmtrNNEY9ywOuMPADuVlYF";
+  const apikey = "sUMglAsfNTHy23oAIGYlmrhzOQ6fMXDC";
   let ckey = "";
 
   let apiurl = `https://dataservice.accuweather.com/locations/v1/cities/search?apikey=${apikey}&q=${searchCity}`;
