@@ -8,27 +8,6 @@ This is a simple weather website that provides current weather information based
 - **Location-based:** Provide weather details based on user input.
 - **Weather Forecast:** Get Weather Foreacsting of Future 12 Hours
 
-## Demo
-
-
-Check out the live demo [here](https://your-weather-website-url.com).
-
-## Installation
-
-1. Clone the repository:
-
-    ```bash
-    git clone https://github.com/your-username/weather-website.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd weather-website
-    ```
-
-3. Open `index.html` in your web browser.
-
 ## Usage
 
 1. Enter the location for which you want to check the weather.
